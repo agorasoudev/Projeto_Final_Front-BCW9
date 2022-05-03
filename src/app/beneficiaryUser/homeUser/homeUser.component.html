@@ -1,0 +1,828 @@
+<section class="pt-2">
+  <!-- Menu navegação do Beneficiário -->
+  <div class="row background mb-5 p-3 col-12 col-lg-12 m-auto pt-3">
+    <div id="tabs" #tabs class="px-5 py-2 col-12 col-sm-12 col-md-12 col-lg-12">
+      <ul class="flex nav nav-tabs mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item col-10 col-sm-6 col-md-6 col-lg-3">
+          <a
+            class="nav-link active ms-1"
+            id="planos-tab"
+            data-toggle="pill"
+            role="tab"
+            aria-selected="false"
+            [ngClass]="{ active: activeTab === 'planos' }"
+            (click)="handleActiveTab('planos')"
+            [routerLink]="['./']"
+            fragment="planos"
+            >Planos e Benefícios</a
+          >
+        </li>
+        <li class="nav-item col-10 col-sm-6 col-md-6 col-lg-3">
+          <a
+            class="nav-link ms-1"
+            id="saudenatela-tab"
+            data-toggle="pill"
+            role="tab"
+            aria-selected="false"
+            [ngClass]="{ active: activeTab === 'saudenatela' }"
+            (click)="handleActiveTab('saudenatela')"
+            [routerLink]="['./']"
+            fragment="saudenatela"
+            >Saúde na Tela</a
+          >
+        </li>
+        <li class="nav-item col-10 col-sm-6 col-md-6 col-lg-3">
+          <a
+            class="nav-link ms-1"
+            id="perfil-tab"
+            data-toggle="pill"
+            role="tab"
+            aria-selected="false"
+            [ngClass]="{ active: activeTab === 'perfil' }"
+            (click)="handleActiveTab('perfil')"
+            [routerLink]="['./']"
+            fragment="perfil"
+            >Meus Dados</a
+          >
+        </li>
+        <li class="nav-item col-10 col-sm-6 col-md-6 col-lg-3">
+          <a
+            class="nav-link ms-1"
+            id="agendamentos-tab"
+            data-toggle="pill"
+            role="tab"
+            aria-selected="false"
+            [ngClass]="{ active: activeTab === 'agendamentos' }"
+            (click)="handleActiveTab('agendamentos')"
+            [routerLink]="['./']"
+            fragment="agendamentos"
+            >Meus Agendamentos</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content" id="pills-tabContent">
+      <!-- Imagem e descrição do "Saúde na Tela" -->
+      <div
+        class="tab-pane col-lg-12 m-auto show"
+        id="saudenatela"
+        role="tabpanel"
+        aria-labelledby="saudenatela-tab"
+        [ngClass]="{ active: activeTab === 'saudenatela' }"
+      >
+        <div class="col-12 col-lg-8 m-auto">
+          <div class="text-center">
+            <img
+              id="img"
+              class="w-auto col-sd-none col-md-none figure-img mt-2 img-fluid rounded"
+              src="../../../assets/equipemedica.jpg"
+              alt=""
+            />
+            <div class="py-lg-1">
+              <div class="float col-sm-10 col-lg-12 mx-auto">
+                <h2 class="fw-light">Saúde na Tela</h2>
+                <p class="lead text-muted">
+                  Com o Saúde na Tela, você pode ser atendido por qualquer
+                  médico profissional, sem sair de casa.
+                  <br />
+                  Além de permitir que você receba prescrição de medicamentos,
+                  guia de exames ou encaminhamento.
+                  <br />
+                </p>
+                <p>
+                  <a href="#" class="btn btn-primary mx-2">Saiba Mais</a>
+                  <a href="#" class="btn btn-secondary my-1"
+                    >Solicitar Atendimento</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Inicio Meus dados -->
+      <div
+        class="tab-pane col-lg-12 m-auto show"
+        id="perfil"
+        role="tabpanel"
+        aria-labelledby="perfil-tab"
+        [ngClass]="{ active: activeTab === 'perfil' }"
+      >
+        <h2 class="text-center">Dados Pessoais</h2>
+        <div class="card m-auto" style="width: 25rem">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              Nome
+              <p class="text-muted">{{ user.name }}</p>
+            </li>
+            <li class="list-group-item">
+              CPF
+              <p class="text-muted">{{ user.cpf }}</p>
+            </li>
+            <li class="list-group-item">
+              Phone
+              <p class="text-muted">{{ user.phone }}</p>
+            </li>
+            <li class="list-group-item">
+              Email
+              <p class="text-muted">{{ user.email }}</p>
+            </li>
+            <li class="list-group-item d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-primary m-auto"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal1"
+              >
+                Alterar Dados
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary m-auto"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                Excluir conta
+              </button>
+            </li>
+          </ul>
+          <!-- Modal de confirmação para excluir -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Deseja Excluir a conta?</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-footer mx-auto">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Não
+                  </button>
+                  <button
+                    data-bs-dismiss="modal"
+                    type="button"
+                    class="btn btn-primary"
+                    (click)="deleteUser()"
+                  >
+                    Sim
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal para editar dados -->
+          <div
+            class="modal fade"
+            id="exampleModal1"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel1"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Editar campos</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form (submit)="updateUser()">
+                    <div>
+                      <label for="nome_edit">Nome</label>
+                      <input
+                        type="text"
+                        name="nome_edit"
+                        id="nome_edit"
+                        class="form-control form-control-sm"
+                        value="{{ user.name }}"
+                        [(ngModel)]="user.name"
+                      />
+                    </div>
+                    <div>
+                      <label for="cpf_edit">CPF</label>
+                      <input
+                        type="text"
+                        name="cpf_edit"
+                        id="cpf_edit"
+                        class="form-control form-control-sm"
+                        value="{{ user.cpf }}"
+                        [(ngModel)]="user.cpf"
+                      />
+                    </div>
+                    <div>
+                      <label for="tel_edit">Telefone</label>
+                      <input
+                        type="text"
+                        name="tel_edit"
+                        id="tel_edit"
+                        class="form-control form-control-sm"
+                        value="{{ user.phone }}"
+                        [(ngModel)]="user.phone"
+                      />
+                    </div>
+                    <div>
+                      <label for="email_edit">Email</label>
+                      <input
+                        type="text"
+                        name="email_edit"
+                        id="email_edit"
+                        class="form-control form-control-sm"
+                        value="{{ user.email }}"
+                        [(ngModel)]="user.email"
+                      />
+                    </div>
+
+                    <div class="modal-footer mx-auto">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        Cancelar
+                      </button>
+                      <button type="submit" class="btn btn-primary">
+                        Atualizar
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Planos e Benefícios -->
+
+      <div
+        class="tab-pane col-lg-12 show"
+        id="planos"
+        role="tabpanel"
+        aria-labelledby="planos-tab"
+        [ngClass]="{ active: activeTab === 'planos' }"
+      >
+        <div class="d-none d-md-block col-lg-12 mb-3">
+          <div
+            id="carouselExampleCaptions"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleCaptions"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active d-flex">
+                <img
+                  src="../../../assets/images/carroussel1.png"
+                  style="width: 100vw; height: 85vh"
+                  class="d-block w-100 img-fluid"
+                  alt="..."
+                />
+                <div class="carousel-caption text-left d-none d-md-block">
+                  <p>
+                    <a class="btn btn-lg btn-info" href="#" role="button"
+                      >Contratar</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="../../../assets/images/carroussel2.png"
+                  style="width: 100vw; height: 85vh"
+                  class="d-block w-100"
+                  alt="..."
+                />
+                <div class="carousel-caption text-left d-none d-md-block">
+                  <p>
+                    <a class="btn btn-lg btn-info" href="#" role="button"
+                      >Contratar</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="../../../assets/images/carroussel3.png"
+                  style="width: 100vw; height: 85vh"
+                  class="d-block w-100"
+                  alt="..."
+                />
+                <div class="carousel-caption text-left d-none d-md-block">
+                  <p>
+                    <a class="btn btn-lg btn-info" href="#" role="button"
+                      >Contratar</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+        <div class="row card-deck mb-3 text-center">
+          <div class="card col-sm-12 col-md-12 col-lg-4 mr-1 mb-4 shadow-sm">
+            <div class="card-header text-light">
+              <h4 class="my-0 font-weight-normal">Individual</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                $35 <small class="text-muted">/ mês</small>
+              </h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Individual</li>
+                <li>Enfermaria</li>
+                <li>Atendimento Nacional</li>
+                <li>Exames e Consultas</li>
+                <li>Suporte por email e telefone</li>
+                <li>Acesso ao centro de ajuda</li>
+              </ul>
+              <button type="button" class="btn btn-lg btn-block btn-secondary">
+                Quero esse!
+              </button>
+            </div>
+          </div>
+          <div class="card col-sm-12 col-md-12 col-lg-4 mr-1 mb-4 shadow-sm">
+            <div class="card-header text-light">
+              <h4 class="my-0 font-weight-normal">Familiar</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                $120 <small class="text-muted">/ mês</small>
+              </h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Até 4 pacientes</li>
+                <li>Apartamento(leito)</li>
+                <li>Atendimento Nacional</li>
+                <li>Exames e Consultas</li>
+                <li>Suporte por email e telefone</li>
+                <li>Acesso ao centro de ajuda</li>
+              </ul>
+              <button type="button" class="btn btn-lg btn-block btn-secondary">
+                Quero esse!
+              </button>
+            </div>
+          </div>
+          <div class="card col-sm-12 col-md-12 col-lg-4 mb-4 shadow-sm">
+            <div class="card-header text-light">
+              <h4 class="my-0 font-weight-normal">Empresarial</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title">
+                $590 <small class="text-muted">/ mês</small>
+              </h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Até 10 pacientes</li>
+                <li>Apartamento(leito)</li>
+                <li>Atendimento Nacional</li>
+                <li>Exames e Consultas</li>
+                <li>Suporte por email e telefone</li>
+                <li>Acesso ao centro de ajuda</li>
+              </ul>
+              <button type="button" class="btn btn-lg btn-block btn-secondary">
+                Quero esse!
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meus Agendamentos -->
+      <div
+        class="tab-pane"
+        id="agendamentos"
+        role="tabpanel"
+        aria-labelledby="agendamentos-tab"
+        [ngClass]="{ active: activeTab === 'agendamentos' }"
+      >
+        <table class="table">
+          <thead>
+            <tr >
+              <th class="text-center" scope="col">Especialidade</th>
+              <th class="text-center" scope="col">Data</th>
+              <th class="text-center" scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let consults of consult">
+              <td class=" text-center align-middle">{{ consults.specialty }}</td>
+              <td class=" text-center align-middle">{{ consults.date }}</td>
+              <td class=" text-center align-middle">
+                <button
+                id="edit"
+                type="button"
+                class="btn btn-success btn-primary me-2"
+                (click)="updateconsult(consults._id)">
+                  Alterar
+                </button>
+                <button
+                  id="edit_small"
+                  type="button"
+                  class="btn btn-success btn-primary me-2"
+                  (click)="updateconsult(consults._id)">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button
+                  id="delete"
+                  type="button"
+                  class="btn btn-danger btn-secondary"
+                  (click)="deleteConsult(consults._id)"
+                >
+                  Excluir
+                </button>
+                <button
+                id="delete_small"
+                type="button"
+                class=" btn btn-danger btn-secondary"
+                (click)="deleteConsult(consults._id)"
+              >
+              <i class="fa-solid fa-trash-can"></i>
+              </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Categorias de Planos de Saúde -->
+  </div>
+</section>
+<!-- Menu de acessos rápidos -->
+<section class="text-center">
+  <h2 class="pb-4">Acessos Rápidos</h2>
+  <div class="album">
+    <div class="container bg-light p-0">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+        <div class="col col-sm-6 col-md-6 col-lg-3">
+          <div class="card shadow-sm">
+            <img
+              class="img-fluid"
+              src="../../../assets/consulta.webp"
+              alt="Marcar Consulta"
+            />
+            <!-- Card 1 -->
+            <div class="card-body">
+              <h5>Marcar Consulta</h5>
+              <p class="card-text">Ambulatorial e Hospitalar</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn btn-secondary px-5 m-3 mx-auto">Marcar</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-sm-6 col-md-6 col-lg-3">
+          <div class="card shadow-sm">
+            <img
+              class="img-fluid"
+              src="../../../assets/boleto.jpg"
+              alt="Gerar segunda via de boleto"
+            />
+            <!-- Card 2 -->
+            <div class="card-body">
+              <h5>Boleto: 2ª via</h5>
+              <p class="card-text">Boleto Atualizado</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="mx-auto btn-group">
+                  <a href="/boleto" class="btn btn-secondary px-5 m-3">
+                    Gerar
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-sm-6 col-md-6 col-lg-3">
+          <div class="card shadow-sm">
+            <title>Médicos Credenciados</title>
+            <img
+              class="img-fluid"
+              src="../../../assets/medicoscredenciados.jpg"
+              alt="Médicos Credenciados"
+            />
+            <!-- Card 3 -->
+            <div class="card-body">
+              <h5>Médicos</h5>
+              <p class="card-text">Rede Credenciada</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="mx-auto btn-group">
+                  <a href="/lista-medicos" class="btn btn-secondary px-5 m-3"
+                    >Consultar</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-sm-6 col-md-6 col-lg-3">
+          <div class="card shadow-sm">
+            <img
+              class="img-fluid"
+              src="../../../assets/reemb.jpg"
+              alt="Marcar Consulta"
+            />
+            <!-- Card 4 -->
+            <div class="card-body">
+              <h5>Reembolso</h5>
+              <p>Rede Não Credenciada</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="mx-auto btn-group">
+                  <a href="/reembolso" class="btn btn-secondary px-5 m-3"
+                    >Solicitar</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contatos -->
+<section>
+  <div class="col-10 col-sm-10 col-md-9 col-lg-8 m-auto">
+    <div class="accordion accordion-flush py-5" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne"
+            aria-expanded="false"
+            aria-controls="flush-collapseOne"
+          >
+            Central de Atendimento Beneficiário
+          </button>
+        </h2>
+        <div
+          id="flush-collapseOne"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <ul>
+              <div class="col-lg-12">
+                <li>
+                  <p class="m-3">
+                    Capitais e Regiões Metropolitanas: 3004-1000
+                  </p>
+                </li>
+                <li>
+                  <p class="m-3">Demais Localidades: 0800-706-2363</p>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo"
+            aria-expanded="false"
+            aria-controls="flush-collapseTwo"
+          >
+            SAC - Serviço de Atendimento ao Cliente
+          </button>
+        </h2>
+        <div
+          id="flush-collapseTwo"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingTwo"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <ul>
+              <div class="col-lg-12">
+                <li>
+                  <p class="m-3">
+                    Capitais e Regiões Metropolitanas: 3004-1000
+                  </p>
+                </li>
+                <li>
+                  <p class="m-3">Demais Localidades: 0800-706-2363</p>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingThree">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseThree"
+            aria-expanded="false"
+            aria-controls="flush-collapseThree"
+          >
+            Central de Agendamento
+          </button>
+        </h2>
+        <div
+          id="flush-collapseThree"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingThree"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <ul>
+              <div class="col-lg-12">
+                <li>
+                  <p class="m-3">
+                    Capitais e Regiões Metropolitanas: 3004-1000
+                  </p>
+                </li>
+                <li>
+                  <p class="m-3">Demais Localidades: 0800-706-2363</p>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingFive">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseFive"
+            aria-expanded="false"
+            aria-controls="flush-collapseFive"
+          >
+            Central de Atendimento ao Corretor
+          </button>
+        </h2>
+        <div
+          id="flush-collapseFive"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingFive"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <ul>
+              <div class="col-lg-12">
+                <li>
+                  <p class="m-3">
+                    Capitais e Regiões Metropolitanas: 3004-1000
+                  </p>
+                </li>
+                <li>
+                  <p class="m-3">Demais Localidades: 0800-706-2363</p>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingSix">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseSix"
+            aria-expanded="false"
+            aria-controls="flush-collapseSix"
+          >
+            Central de Atendimento Gestor PJ
+          </button>
+        </h2>
+        <div
+          id="flush-collapseSix"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingSix"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <ul>
+              <div class="col-lg-12">
+                <li>
+                  <p class="m-3">
+                    Capitais e Regiões Metropolitanas: 3004-1000
+                  </p>
+                </li>
+                <li>
+                  <p class="m-3">Demais Localidades: 0800-706-2363</p>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingSeven">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseSeven"
+            aria-expanded="false"
+            aria-controls="flush-collapseSeven"
+          >
+            Assistência Viagem Nacional e Internacional
+          </button>
+        </h2>
+        <div
+          id="flush-collapseSeven"
+          class="accordion-collapse collapse"
+          aria-labelledby="flush-headingSeven"
+          data-bs-parent="#accordionFlushExample"
+        >
+          <div class="accordion-body">
+            <ul>
+              <div class="col-lg-12">
+                <li>
+                  <p class="m-3">
+                    Capitais e Regiões Metropolitanas: 3004-1000
+                  </p>
+                </li>
+                <li>
+                  <p class="m-3">Demais Localidades: 0800-706-2363</p>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="SoulHealth"
+    chat-icon="https://i.imgur.com/T3nuXDl.png"
+    agent-id="6cac0825-8688-4623-a93a-f44bf5ee352f"
+    language-code="pt-br"
+  ></df-messenger>
+</section>

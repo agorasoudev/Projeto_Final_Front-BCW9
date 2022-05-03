@@ -1,0 +1,39 @@
+@import "../../SASS/main"
+
+#hero
+  background-image: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)), url("../../assets/images/hero-pic.jpg")
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center center
+  padding-top: 12%
+
+#hero-container
+  height: 50vh
+
+hr
+  width: 50%
+  margin: 15px auto
+
+h3
+  @include subtitles_h3
+
+.card
+  max-width:400px
+  max-height:600px
+
+.col-lg-4
+  margin-top: 78px
+
+.btn-primary
+  @include btn-primary
+
+.btn-secondary
+  @include btn-secondary
+
+@media (min-width: 1624px)
+  .col-12
+    max-width: 264px
+
+@media (min-width: 992px) and (max-width: 1199px)
+  #logoCardRede
+    width: 70%

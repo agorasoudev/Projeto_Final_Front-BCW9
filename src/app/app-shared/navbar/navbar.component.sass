@@ -1,0 +1,167 @@
+@import '../../../SASS/main'
+
+// Reset
+*
+  box-sizing: border-box
+
+// Classes
+
+.header-navbar
+  // background-color: $bg-color-secondary
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  height: 60px
+  @include container-navbar
+
+  .header-social-media
+    ul
+      list-style: none
+      @include flex-center
+      height: 100%
+    li
+      margin: 0 1.1rem
+      a
+        color: $terciary-color
+        font-size: 1.2rem
+        &:hover
+          color: $primary-color
+
+.listCenter
+  font-family: $fonte-primary
+  @include flex-center
+  a
+    @include icon-navbar
+
+.listRight
+  font-family: $fonte-primary
+  @include flex-center
+  .btn
+    @include btn-secondary
+    margin: 0
+    margin-right: 0.8rem
+    &:hover
+      background-color: $bg-color-light
+      color: $primary-color
+      border-color: $primary-color
+
+.btn-success
+  @include btn-success
+
+.navbar
+  background: $primary-color
+  height: 90px
+
+  i
+    color: $terciary-color
+    font-size: 1.2rem
+    &:hover
+      color: $primary-color
+      text-decoration: none
+
+      padding: 0
+  a
+    font-family: $fonte-primary
+    font-size: 1.1rem
+    padding: 0.5rem 1rem
+    color: $text-color-light
+    &:hover
+      color: $terciary-color
+      text-decoration: none
+
+.container-fluid
+  padding-left: 0
+
+.offcanvas
+  font-family: $fonte-primary
+
+.navbar-toggler .navbar-toggler-icon
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(231,254,252,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E")
+
+.offcanvas-body
+  background: $offcanvas-color
+
+.navbar-toggler
+  border: $text-color-secondary solid 1px
+  &:focus
+    color: $text-color-secondary
+
+.fancy-border
+  border-top: 90px solid $bg-color-light
+  border-left: 0px solid transparent
+  border-right: 80px solid transparent
+  height: 90px
+  width: 300px
+  position: relative
+  // top: -8px
+  .logomd
+    width: 200px
+    position: absolute
+    top: -100px
+    left: 30px
+  .logosm
+    width: 100px
+    position: absolute
+    top: -100px
+    left: 40%
+
+// Media queries ( não terminamos a media query da img navbar)
+
+@media (max-width: 920px)
+  .listCenter
+    display: none
+
+@media (max-width: 500px)
+  .fancy-border
+    border-top: 90px solid #fff
+    border-left: 0px solid transparent
+    border-right: 80px solid transparent
+    height: 90px
+    width: 150px
+    position: relative
+    top: -8px
+    .logomd
+      width: 200px
+      position: absolute
+      top: -100px
+      left: 30px
+    .logosm
+      width: 90px
+      position: absolute
+      top: -90px
+      left: 5%
+    img
+      position: absolute
+      top: -65px
+      left: 15px
+
+@media (max-width: 991px) and (min-width: 501px)
+  .fancy-border
+    border-top: 90px solid #fff
+    border-left: 0px solid transparent
+    border-right: 80px solid transparent
+    height: 90px
+    width: 300px
+    position: relative
+    top: -8px
+    .logomd
+      width: 200px
+      position: absolute
+      top: -100px
+      left: 30px
+    .logosm
+      width: 100px
+      position: absolute
+      top: -95px
+      left: 35%
+    img
+      position: absolute
+      top: -65px
+      left: 15px
+
+@media (max-width: 991px)
+  .offcanvas
+    margin-top: -50px
+    z-index: 99999 !important
+    .offcanvas-body
+      margin-top: -50px

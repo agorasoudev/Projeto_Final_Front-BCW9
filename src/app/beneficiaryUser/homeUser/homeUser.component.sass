@@ -1,0 +1,81 @@
+@import '../../../SASS/main'
+
+.btn-primary
+  @include btn-primary
+
+.btn-secondary
+  @include btn-secondary
+
+.btn-info
+  @include btn-secondary
+
+.card-header
+  background-color: $bg-color-primary
+
+h2
+  @include subtitles_h3
+
+df-messenger
+  --df-messenger-button-titlebar-color: $text-color-light
+
+  --df-messenger-button-titlebar-color: #EB9A28
+  --df-messenger-button-titlebar-font-color: #025373
+a
+  font-weight: bold
+  color: $text-color-primary
+
+  &:hover
+    background-color: $bg-color-secondary
+    color: $text-color-dark
+
+.phonesAccordions__div-phones-points
+  flex: 1 1
+  height: 1px
+  color: #ededed
+  border-bottom: 2px dotted
+  margin: 0 5px 5px
+  min-width: 70px
+
+.carousel
+  margin-bottom: 4rem
+  position: relative
+
+.text-left
+  text-align: left
+
+.text
+  font-size: 20px
+
+.row
+  --bs-gutter-x: 0
+
+#agendamentos
+  width: 70%
+  margin: auto
+
+@media (max-width: 719px)
+  #img
+    display: none
+
+@media (max-width: 1250px)
+  .carousel
+    display: none
+
+@media (min-width: 576px)
+  #edit_small
+    display: none
+  #delete_small
+    display: none
+
+@media (max-width: 575px)
+  #edit
+    display: none
+  #delete
+    display: none
+
+@media (max-width: 415px)
+  .table
+    margin-left: -15px
+
+
+

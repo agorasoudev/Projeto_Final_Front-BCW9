@@ -1,0 +1,59 @@
+@import '../../../SASS/main'
+
+footer
+  background-color: $primary-color
+  font-family: $fonte-primary
+
+.container
+  color: $text-color-light
+  h6
+    color: $text-color-light
+  i
+    color: $terciary-color
+    padding-right: 0.5rem
+
+.social-media
+  padding-bottom: 0
+  i
+    @include icon-light-footer
+
+#copyright
+  background-color: rgba(0, 0, 0, 0.05)
+  color: $text-color-secondary
+  a
+    @include link-footer
+
+#products
+  p
+    @include link-footer
+    a
+      text-decoration: none
+    i
+      color: $text-color-secondary
+
+#img
+  color: $text-color-secondary
+  a
+    img
+      width: 90px
+      object-fit: cover
+      object-position: center
+      padding: 0.3rem
+      border-radius: 8px
+      position: relative
+      top: 0
+      &:hover
+        top: -4px
+        box-shadow: -4px 4px 4px $text-color-secondary
+        transition: .2s ease-in-out
+        opacity: 0.9
+      &:focus
+        outline: outset
+
+@media (max-width: 991px)
+  #img
+    display: none
+
+
+
+
